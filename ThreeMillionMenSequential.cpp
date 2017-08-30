@@ -70,7 +70,7 @@ void readFromFile(int &tMen, char* path, mapOfStrings* SFC, mapOfStrings* SSC)
 		(*SSC)[secondComponent] = firstComponent;
 	}
 	inFile.close();
-	std::cout << "Done\nComputing data now. Please wait..." << std::endl;
+	std::cout << "Done\nComputing data now. Please wait...(You might have to watch a movie if it's 3M)" << std::endl;
 	return;
 }
 
