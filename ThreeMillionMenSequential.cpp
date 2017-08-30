@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <map>
+#include <map> //To be removed and replaced by vector
 #include <cassert> //Used to check if file is being read
 
 
