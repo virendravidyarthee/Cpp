@@ -23,16 +23,16 @@ int main(int argc, char* argv[])
 	mapOfStrings* H;
 	std::map<std::string, int>*G;
 	std::map<int, std::string> finalResult;
+
+
+
 	sortedByFirstComponent = new mapOfStrings;
 	sortedBySecondComponent = new mapOfStrings;
-
-
 	readFromFile(totalMen, argv[1],sortedByFirstComponent,sortedBySecondComponent); // This functions reads from file path and fills the containers sortedBySecondComponent
 	F = new mapOfStrings;
 	G = new std::map<std::string,int>;
 	H = new mapOfStrings;
 	populateFHG(totalMen, sortedByFirstComponent,sortedBySecondComponent, F, H, G);
-
 	delete sortedByFirstComponent;
 	delete sortedBySecondComponent;
 	//F and G are available at this point. Initial phase thus ends here
@@ -118,14 +118,14 @@ std::map<int, std::string> computeFinalResult(int tMen, mapOfStrings* dataF, std
 	mapOfStrings::iterator H_Iterator, F_Iterator;
 
 	int t = 2;
-	while (!(t >= tMen))
+	while (t<tMen)
 	{
 		F_Iterator = dataF->begin();
 		H_Iterator = dataH->begin();
 		G_Iterator = dataG->begin();
 		while (F_Iterator != dataF->end())
 		{
-			if (F_Iterator->first == H_Iterator->first)
+			if (H_Iterator != dataH->end() && F_Iterator->first == H_Iterator->first)
 			{
 				fPrime[H_Iterator->second] = F_Iterator->second;
 				hPrime[F_Iterator->second] = H_Iterator->second;
@@ -138,7 +138,7 @@ std::map<int, std::string> computeFinalResult(int tMen, mapOfStrings* dataF, std
 				++F_Iterator;
 				++G_Iterator;
 			}
-			else if (F_Iterator->first > H_Iterator->first)
+			else if (H_Iterator != dataH->end() && F_Iterator->first > H_Iterator->first)
 			{
 
 				++H_Iterator;
