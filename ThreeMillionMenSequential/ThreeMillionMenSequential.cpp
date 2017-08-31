@@ -28,11 +28,11 @@ int main(int argc, char* argv[])
 
 	sortedByFirstComponent = new mapOfStrings;
 	sortedBySecondComponent = new mapOfStrings;
-	readFromFile(totalMen, argv[1],sortedByFirstComponent,sortedBySecondComponent); // This functions reads from file path and fills the containers sortedBySecondComponent
+	readFromFile(totalMen, argv[1], sortedByFirstComponent, sortedBySecondComponent); // This functions reads from file path and fills the containers sortedBySecondComponent
 	F = new mapOfStrings;
-	G = new std::map<std::string,int>;
+	G = new std::map<std::string, int>;
 	H = new mapOfStrings;
-	populateFHG(totalMen, sortedByFirstComponent,sortedBySecondComponent, F, H, G);
+	populateFHG(totalMen, sortedByFirstComponent, sortedBySecondComponent, F, H, G);
 	delete sortedByFirstComponent;
 	delete sortedBySecondComponent;
 	//F and G are available at this point. Initial phase thus ends here
@@ -56,7 +56,7 @@ void readFromFile(int &tMen, char* path, mapOfStrings* SFC, mapOfStrings* SSC)
 {
 	std::cout << "Reading from file. Please wait..." << std::endl;
 	std::fstream inFile(path);
-	
+
 	std::string line, firstComponent, secondComponent;
 
 	std::map<std::string, std::string>::iterator SSC_Iterator, SFC_Iterator;
@@ -65,7 +65,7 @@ void readFromFile(int &tMen, char* path, mapOfStrings* SFC, mapOfStrings* SSC)
 	{
 		tMen++;
 		firstComponent = line.substr(0, line.find(','));
-		secondComponent= line.substr(line.find(',') + 1);
+		secondComponent = line.substr(line.find(',') + 1);
 		(*SFC)[firstComponent] = secondComponent;
 		(*SSC)[secondComponent] = firstComponent;
 	}
@@ -76,9 +76,9 @@ void readFromFile(int &tMen, char* path, mapOfStrings* SFC, mapOfStrings* SSC)
 
 void populateFHG(int tMen, mapOfStrings* SFC, mapOfStrings* SSC, mapOfStrings* dataF, mapOfStrings* dataH, std::map<std::string, int>* dataG)
 {
-	
+
 	std::map<std::string, std::string>::iterator SFC_Iterator, SSC_Iterator;
-	
+
 
 	//Initial phase begins here(Creating F here)
 	SFC_Iterator = SFC->begin();
